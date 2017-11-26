@@ -1,0 +1,149 @@
+
+<html>
+  <head>  
+  
+  <!-- <script src="angular.js"></script>  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+  <script src="js/country_app.js"></script> 
+  <script src="js/controller/country_controller.js"></script>
+  <script src="js/service/country_service.js"></script>
+  
+  <link rel="stylesheet" href="bootstrap.min.css">
+    
+<body >
+    
+<div ng-app = "myApp">
+   <div ng-controller="CountryController as ctrl">
+	       <form name="countryForm" id="countryForm">
+	       <!-- <form class="well"> -->  
+	            <table>
+	                <tr>
+	                    <th colspan="2">Add/Edit country</th>
+	                 </tr>
+	                <tr>
+	                    <td>Id</td>
+	                    <td><input type="text" ng-model="countryForm.countryId" /></td>
+	                </tr>
+	                <tr>
+	                    <td>Country</td>
+	                    <td><input type="text" ng-model="countryForm.countryName" /></td>
+	                </tr>
+	                <tr>
+	                    <td>Population</td>
+	                    <td><input type="text" ng-model="countryForm.population"  /></td>
+	                </tr>
+	                <tr>
+	                    <td colspan="2">
+	                    <!-- <input type="submit" value="Submit" class="blue-button" /> -->
+	                    <input type="button" class="btn btn-success btn-sm" value="add student" ng-click="addCountry()" />
+	                    <button type="button" class="btn btn-warning btn-sm" ng-click="reset()" >Reset Form</button>
+	                  <!--   <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="countryForm.$pristine">Reset Form</button> -->
+	                    </td>
+	                </tr>
+	            </table>
+	        </form> 
+	        <table>
+	            <tr>
+	          	  	<th>CountryId</th>
+	                <th>CountryName</th>
+	                <th>Population</th>
+	                <th>Operations</th>
+	               
+	            </tr>
+	            <tr ng-repeat="country in countries">
+	           		<td> {{ country.id }}</td>
+	    			<td> {{ country.countryName }}</td>
+	    			<td >{{ country.population }}</td>  
+	                <td><a ng-click="editCountry(country.id)" class="blue-button">Edit</a> | <a ng-click="deleteCountry(country.id)" class="red-button">Delete</a></td>
+	            </tr>
+	        </table>
+        </div>
+ </div> 
+ 
+  
+      
+</body>
+
+<style>
+           
+	.blue-button{
+		background: #25A6E1;
+		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#25A6E1',endColorstr='#188BC0',GradientType=0);
+		padding:3px 5px;
+		color:#fff;
+		font-family:'Helvetica Neue',sans-serif;
+		font-size:12px;
+		border-radius:2px;
+		-moz-border-radius:2px;
+		-webkit-border-radius:4px;
+		border:1px solid #1A87B9
+	}     
+
+.red-button{
+	background: #CD5C5C;
+
+	padding:3px 5px;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:12px;
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:4px;
+	border:1px solid #CD5C5C
+}      
+
+table {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+   width: 50%;
+}
+
+caption {
+  text-align: left;
+  color: silver;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+th {
+  background: SteelBlue;
+  color: white;
+}
+
+
+tbody tr:nth-child(even) {
+  background: WhiteSmoke;
+}
+
+tbody tr td:nth-child(2) {
+  text-align:center;
+}
+
+tbody tr td:nth-child(3),
+tbody tr td:nth-child(4) {
+  text-align: center;
+  font-family: monospace;
+}
+
+tfoot {
+  background: SeaGreen;
+  color: white;
+  text-align: right;
+}
+
+tfoot tr th:last-child {
+  font-family: monospace;
+}
+
+            td,th{
+                border: 1px solid gray;
+                width: 25%;
+                text-align: left;
+                padding: 5px 10px;
+            }
+          
+            
+            
+        </style>
+
+</html>
